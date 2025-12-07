@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../../assets/Gemini_Generated_Image_4e0w984e0w984e0w-removebg-preview.png';
 
 // Active link style function
 const getLinkStyle = ({ isActive }) => {
@@ -32,7 +33,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="header-text  text-2xl md:text-3xl font-display t-accent normal-case">Chef Hut</a>
+                    <Link to={'/'} className="header-text flex gap-1 items-center text-2xl md:text-3xl font-display t-accent normal-case"><img className='h-10' src={logo} alt="" /> Chef Hut</Link>
                 </div>
 
                 {/* Desktop Links */}
