@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.b-g-main{
+    background-color: #0E0E11;
+}
+.b-g-surface{
+    background-color: #14141A;
+}
+.b-g-accent{
+    background-color: #C9A24D;
+}
+
+.t-primary{
+    color: #EAEAEA;
+}
+.t-muted{
+    color: #A1A1AA;
+}
+
+.t-accent{
+    color: #C9A24D;
+}
+.b-subtle{
+    color: #23232A;
+}
+
+p{
+    color: #A1A1AA;
+}
+
+body {
+   font-family: "Inter", sans-serif;
+   
+}
+
+.header-text {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
