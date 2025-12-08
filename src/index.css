@@ -24,6 +24,9 @@
 .t-accent{
     color: #C9A24D;
 }
+.hover-accent:hover{
+   color: #C9A24D;
+}
 .b-subtle{
     border: 1px solid #23232A;
 }
@@ -63,6 +66,6 @@ body {
     100% { transform: scale(1.1); }
   }
   .animate-zoomImg:hover {
-    animation: zoomBg .9s ease-in-out both;
+    animation: zoomBg .9s ease-out both;
   }
 }
