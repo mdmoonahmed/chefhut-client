@@ -25,7 +25,13 @@
     color: #C9A24D;
 }
 .b-subtle{
-    color: #23232A;
+    border: 1px solid #23232A;
+}
+
+.header-text {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
 }
 
 p{
@@ -38,11 +44,7 @@ body {
    
 }
 
-.header-text {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-}
+
 
 @layer utilities {
   @keyframes zoomBg {

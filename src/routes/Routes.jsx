@@ -5,7 +5,6 @@ import Home from '../pages/Home/Home';
 import ErrorPage from '../pages/Error/ErrorPage';
 import Meals from '../pages/Meals/Meals';
 import UserDashboard from '../pages/Dashboard/UserDashboard';
-import AuthLayout from '../Layout/AuthLayout';
 import Root from '../Layout/Root';
 import Login from '../pages/Auth/Login';
 import Register from '../pages/Auth/Register';
