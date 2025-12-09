@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
 import MealCard from "../../components/Card/MealCard";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
+import { FaArrowAltCircleRight, FaFacebook } from "react-icons/fa";
 
 const MealsPage = () => {
   const api = useAxios();
@@ -13,7 +15,7 @@ const MealsPage = () => {
 
   const limit = 9;
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["meals", currentPage, sort, order, search],
     queryFn: async () => {
       const res = await api.get(
@@ -24,9 +26,6 @@ const MealsPage = () => {
     keepPreviousData: true,
   });
 
-  // if (isLoading) {
-  //   return <div className="t-muted text-center mt-20">Loading meals...</div>;
-  // }
 
   const meals = data?.meals || [];
   const totalPages = Math.ceil((data?.total || 0) / limit);
@@ -36,7 +35,7 @@ const MealsPage = () => {
       {/* Page Header */}
       <div className="text-center mb-10">
         <h2 className="header-text t-primary text-3xl md:text-4xl mb-2">
-          Daily Meals
+          Daily Meals 
         </h2>
         <p className="t-muted text-sm">
           Fresh meals cooked by local chefs
@@ -44,7 +43,7 @@ const MealsPage = () => {
       </div>
 
       {/* Controls */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-between max-w-6xl mx-auto mb-8">
+      <div className="flex flex-row sm:flex-row gap-4 justify-between max-w-6xl mx-auto mb-8">
         <input
           type="text"
           placeholder="Search meals..."
@@ -55,15 +54,25 @@ const MealsPage = () => {
           }}
           className="b-g-surface b-subtle t-primary px-4 py-2 rounded-md w-full sm:w-1/2"
         />
-
-        <select
-          onChange={(e) => setSort(e.target.value)}
-          className="b-g-surface b-subtle t-primary px-4 py-2 rounded-md"
-        >
-          <option value="createdAt">Newest</option>
-          <option value="price">Price</option>
-          <option value="rating">Rating</option>
-        </select>
+      
+        <div className="flex gap-2">
+             <select
+             onChange={(e) => setSort(e.target.value)}
+             className="b-g-surface b-subtle t-primary px-2 sm:px-4 py-2 rounded-md"
+           >
+             <option value="createdAt">Newest</option>
+             <option value="price">Price</option>
+             <option value="rating">Rating</option>
+           </select>
+           
+           <select
+             onChange={e=> setOrder(e.target.value)}
+             className="b-g-surface b-subtle text-white px-1 py-2 rounded-md"
+           >
+               <option value="desc">▼</option>
+               <option value="asc">▲</option>
+           </select>
+        </div>
       </div>
 
       {/* Cards */}
