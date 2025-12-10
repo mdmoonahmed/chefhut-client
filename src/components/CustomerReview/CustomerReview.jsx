@@ -63,7 +63,6 @@ const CustomerReviewsCarousel = () => {
     refetchOnWindowFocus: false,
   });
   console.log(reviews);
-  
 
   // scroll helper
   const scrollByPage = (direction = "next") => {
@@ -105,11 +104,11 @@ const CustomerReviewsCarousel = () => {
       el.removeEventListener("mouseenter", handleEnter);
       el.removeEventListener("mouseleave", handleLeave);
     };
-  }, [reviews.length]); 
+  }, [reviews.length]);
 
   return (
-    <section className="py-16 px-4 b-g-main">
-      <div className="max-w-7xl mx-auto">
+    <section className=" px-4 b-g-main">
+      <div className="max-w-7xl py-16 border-t mx-auto">
         {/* header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
@@ -121,7 +120,8 @@ const CustomerReviewsCarousel = () => {
                 What Customers Say
               </h2>
               <p className="t-muted max-w-xl">
-                Real reviews from customers who enjoyed homemade meals from our chefs.
+                Real reviews from customers who enjoyed homemade meals from our
+                chefs.
               </p>
             </div>
           </div>
@@ -130,14 +130,14 @@ const CustomerReviewsCarousel = () => {
             <button
               aria-label="Previous reviews"
               onClick={() => scrollByPage("prev")}
-              className="b-g-surface b-subtle rounded-full p-2 hover:brightness-105 transition"
+              className="b-g-surface b-subtle t-accent rounded-full p-2 hover:brightness-105 transition"
             >
               <FaChevronLeft />
             </button>
             <button
               aria-label="Next reviews"
               onClick={() => scrollByPage("next")}
-              className="b-g-surface b-subtle rounded-full p-2 hover:brightness-105 transition"
+              className="b-g-surface t-accent b-subtle rounded-full p-2 hover:brightness-105 transition"
             >
               <FaChevronRight />
             </button>
@@ -150,30 +150,30 @@ const CustomerReviewsCarousel = () => {
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-2 px-2"
           style={{ scrollbarWidth: "none" }}
         >
-          {isLoading
-            ? [1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] flex-shrink-0 rounded-xl b-g-surface b-subtle p-5 animate-pulse"
-                />
-              ))
-            : reviews.length > 0
-            ? reviews.map((r) => (
-                <div
-                  key={r._id || r.date}
-                  className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] flex-shrink-0 snap-center"
-                >
-                  <ReviewCard r={r} />
-                </div>
-              ))
-            : (
-              <div className="min-w-full b-g-surface b-subtle rounded-xl p-6 text-center">
-                <p className="t-muted">No reviews yet — be the first to leave one!</p>
+          {isLoading ? (
+            [1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] flex-shrink-0 rounded-xl b-g-surface b-subtle p-5 animate-pulse"
+              />
+            ))
+          ) : reviews.length > 0 ? (
+            reviews.map((r) => (
+              <div
+                key={r._id || r.date}
+                className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] flex-shrink-0 snap-center"
+              >
+                <ReviewCard r={r} />
               </div>
-            )}
+            ))
+          ) : (
+            <div className="min-w-full b-g-surface b-subtle rounded-xl p-6 text-center">
+              <p className="t-muted">
+                No reviews yet — be the first to leave one!
+              </p>
+            </div>
+          )}
         </div>
-
-        
       </div>
     </section>
   );

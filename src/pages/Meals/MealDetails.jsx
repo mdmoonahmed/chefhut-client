@@ -76,7 +76,9 @@ const MealDetails = () => {
     };
 
     await api.post("/reviews", reviewDoc);
-
+    toast.success("Review submitted successfully",{
+        theme:'dark'
+      })
     form.reset();
     refetch();
   };

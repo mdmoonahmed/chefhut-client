@@ -11,6 +11,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import Loading from "../components/Loader/Loader";
 import MealDetails from "../pages/Meals/MealDetails";
 import MealsPage from "../pages/Meals/MealsPage";
+import OrderPage from "../pages/Meals/OrderPage";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><MealDetails/></PrivateRoutes>,
       },
       {
+        path: "/order",
+        element: <PrivateRoutes><OrderPage></OrderPage></PrivateRoutes>
+      },
+      {
         path: "/login",
         Component: Login,
       },
@@ -45,11 +51,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: 
-      <PrivateRoutes>
-        <UserDashboard />
-      </PrivateRoutes>
-    ,
-    children: [],
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        
+      }
+    ],
   },
 ]);

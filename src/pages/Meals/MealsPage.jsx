@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
 import MealCard from "../../components/Card/MealCard";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
-import { FaArrowAltCircleRight, FaFacebook } from "react-icons/fa";
 import useTitle from "../../Hooks/useTitles";
 
 const MealsPage = () => {
@@ -31,6 +29,10 @@ const MealsPage = () => {
 
   const meals = data?.meals || [];
   const totalPages = Math.ceil((data?.total || 0) / limit);
+
+  // if(isLoading){
+  //   return <Loader></Loader>
+  // }
 
   return (
     <div className="min-h-screen b-g-main px-4 py-10">

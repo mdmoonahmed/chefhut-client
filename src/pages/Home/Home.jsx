@@ -23,7 +23,7 @@ const Home = () => {
       />
 
       {/* Featured Meals Section */}
-      <div className="max-w-7xl mx-auto px-4 mt-12">
+      <div className="max-w-7xl border-b pb-16 mx-auto px-4 mt-12">
         {/* Section Title */}
         <h2 className="header-text t-primary text-4xl md:text-5xl font-bold text-center mb-2">
           Today's Special Meals
@@ -39,8 +39,8 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <CustomerReviews></CustomerReviews>
       <WhyChooseUs></WhyChooseUs>
+      <CustomerReviews></CustomerReviews>
     </div>
   );
 };

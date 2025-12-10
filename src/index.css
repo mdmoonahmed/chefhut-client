@@ -37,6 +37,12 @@
   font-weight: bold;
 }
 
+.menu li .active {
+  background-color: #C9A24D;
+  color: #0E0E11;
+  font-weight: 600;
+}
+
 p{
     color: #A1A1AA;
 
