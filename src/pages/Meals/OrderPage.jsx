@@ -9,10 +9,12 @@ import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../components/Loader/Loader";
 import useTitles from '../../Hooks/useTitles';
+import useUser from "../../Hooks/useUser";
 
 const MySwal = withReactContent(Swal);
 
 const OrderPage = () => {
+  const { status } = useUser();
   const api = useAxios();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -87,6 +89,18 @@ const OrderPage = () => {
 
   // submit handler
   const onSubmit = async (formData) => {
+
+      if (status === "fraud") {
+          return Swal.fire({
+            icon: "error",
+            theme: 'dark',
+            title: "Unauthorized Action",
+            text: "You do not have the necessary permissions to perform this action",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#dc3545", 
+            allowOutsideClick: false, 
+          });
+        }
     // show confirmation with SweetAlert
     const confirmed = await MySwal.fire({
       title: `Your total price is ৳${totalPrice}`,

@@ -31,6 +31,7 @@ const ManageRequest = () => {
     const confirm = await MySwal.fire({
       title: action === "approve" ? "Approve request?" : "Reject request?",
       text: action === "approve" ? "This will update the user's role." : "This will mark the request as rejected.",
+      theme:'dark',
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: action === "approve" ? "Yes, approve" : "Yes, reject",
@@ -39,13 +40,14 @@ const ManageRequest = () => {
     if (!confirm.isConfirmed) return;
 
     try {
-      MySwal.fire({ title: action === "approve" ? "Approving..." : "Rejecting...", didOpen: () => { MySwal.showLoading(); }, allowOutsideClick: false });
+      MySwal.fire({ theme:'dark',title: action === "approve" ? "Approving..." : "Rejecting...", didOpen: () => { MySwal.showLoading(); }, allowOutsideClick: false });
       const res = await api.patch(`/requests/${requestId}`, { action });
       MySwal.close();
 
       if (res?.data) {
         await MySwal.fire({
           title: action === "approve" ? "Approved" : "Rejected",
+          theme:'dark',
           text: action === "approve" ? "User role updated and request approved." : "Request rejected.",
           icon: "success",
         });
@@ -73,12 +75,12 @@ const ManageRequest = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th className="text-left">User Name</th>
-                <th className="text-left">User Email</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Requested At</th>
-                <th>Actions</th>
+                <th className="t-accent text-left">User Name</th>
+                <th className="t-accent text-left">User Email</th>
+                <th className="t-accent">Type</th>
+                <th className="t-accent">Status</th>
+                <th className="t-accent">Requested At</th>
+                <th className="t-accent">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -93,7 +95,7 @@ const ManageRequest = () => {
                   <tr key={r._id}>
                     <td className="t-primary">{r.userName}</td>
                     <td className="t-muted text-sm">{r.userEmail}</td>
-                    <td className="capitalize">{r.requestType}</td>
+                    <td className={`capitalize ${r.requestType === 'admin' ? 'text-red-500' : 'text-green-500'}`}>{r.requestType}</td>
                     <td className={`uppercase ${r.requestStatus === "pending" ? "t-accent" : "t-muted"}`}>{r.requestStatus}</td>
                     <td className="t-muted text-sm">{new Date(r.requestTime).toLocaleString()}</td>
                     <td className="flex gap-2">

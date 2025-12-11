@@ -24,7 +24,6 @@ const useRole = () => {
     staleTime: 60_000,
     retry: 1,
   });
-
   return { role, roleLoading, isError, error, refetch };
 };
 

@@ -6,7 +6,6 @@ import Loading from '../components/Loader/Loader';
 const AdminRoutes = ({ children }) => {
     const { role,roleLoading} = useRole();
     const {  loading } = useAuth();
-    console.log(role);
     
     
     if(roleLoading || loading){

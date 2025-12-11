@@ -6,6 +6,8 @@ import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
+import useUser from "../../Hooks/useUser";
+import Swal from "sweetalert2";
 
 const formatDate = (iso) => {
   try {
@@ -16,6 +18,7 @@ const formatDate = (iso) => {
 };
 
 const MealDetails = () => {
+  const { status } = useUser();
   const { id } = useParams();
   const api = useAxios();
   const navigate = useNavigate();
@@ -76,16 +79,15 @@ const MealDetails = () => {
     };
 
     await api.post("/reviews", reviewDoc);
-    toast.success("Review submitted successfully",{
-        theme:'dark'
-      })
+    toast.success("Review submitted successfully", {
+      theme: "dark",
+    });
     form.reset();
     refetch();
   };
 
   // ---------- Favorites handler ----------
   const handleAddFavorite = async () => {
-
     if (!meal) return;
 
     setFavLoading(true);
@@ -102,9 +104,9 @@ const MealDetails = () => {
 
     try {
       const res = await api.post("/favorites", payload);
-      toast.success("Added to favorites❤️",{
-        theme:'dark'
-      })
+      toast.success("Added to favorites❤️", {
+        theme: "dark",
+      });
       // success
       setFavMessage("Added to favorites ❤️");
     } catch (err) {
@@ -159,6 +161,17 @@ const MealDetails = () => {
   } = meal;
 
   const handleOrderNow = () => {
+    if (status === "fraud") {
+      return Swal.fire({
+        icon: "error",
+        theme: 'dark',
+        title: "Unauthorized Action",
+        text: "You do not have the necessary permissions to perform this action",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#dc3545", 
+        allowOutsideClick: false, 
+      });
+    }
     navigate(`/order?mealId=${id}`);
   };
 
@@ -190,13 +203,17 @@ const MealDetails = () => {
               <button
                 onClick={handleAddFavorite}
                 disabled={favLoading}
-                className={`w-full ${favLoading ? "opacity-60 cursor-not-allowed" : ""} b-subtle t-primary py-2 rounded-md`}
+                className={`w-full ${
+                  favLoading ? "opacity-60 cursor-not-allowed" : ""
+                } b-subtle t-primary py-2 rounded-md`}
               >
                 {favLoading ? "Adding..." : "Add to Favorites"}
               </button>
 
               {favMessage && (
-                <p className="t-accent text-sm mt-2 text-center">{favMessage}</p>
+                <p className="t-accent text-sm mt-2 text-center">
+                  {favMessage}
+                </p>
               )}
             </div>
           </div>
