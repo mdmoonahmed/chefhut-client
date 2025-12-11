@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Loading from "../../../components/Loader/Loader";
 
 const MySwal = withReactContent(Swal);
 
@@ -60,7 +61,7 @@ const ManageRequest = () => {
     }
   };
 
-  if (isLoading) return <div className="t-muted p-6">Loading requests...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (isError) return <div className="t-accent p-6">Failed to load requests.</div>;
 
   return (

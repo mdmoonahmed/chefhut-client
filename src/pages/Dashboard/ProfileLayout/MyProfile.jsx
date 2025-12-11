@@ -6,6 +6,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Loading from "../../../components/Loader/Loader";
+import { GoDotFill } from "react-icons/go";
 
 const MySwal = withReactContent(Swal);
 
@@ -163,8 +164,8 @@ const MyProfile = () => {
 
                 <div className="p-3 rounded-md b-g-main">
                   <div className="t-muted text-xs">Status</div>
-                  <div className={`text-sm font-medium ${userStatus === "fraud" ? "t-accent" : "t-primary"}`}>
-                    {userStatus}
+                  <div className={`text-sm flex items-center gap-1 font-medium ${userStatus === "fraud" ? "t-accent" : "t-primary"}`}>
+                   {userStatus === "fraud" ? <GoDotFill className="text-red-500" />: <GoDotFill className="text-green-500" />} {userStatus}
                   </div>
                 </div>
 
