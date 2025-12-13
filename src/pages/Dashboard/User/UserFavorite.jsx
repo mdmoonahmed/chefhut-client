@@ -6,10 +6,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Loader from "../../../components/Loader/Loader";
 import useAuth from "../../../Hooks/useAuth";
+import useTitle from "../../../Hooks/useTitles";
 
 const MySwal = withReactContent(Swal);
 
 const FavoriteMeals = () => {
+    useTitle('Favorites | ChefHut')
   const { user } = useAuth();
   const api = useAxiosSecure();
   const qc = useQueryClient();

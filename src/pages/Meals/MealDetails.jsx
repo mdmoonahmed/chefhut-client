@@ -72,6 +72,7 @@ const MealDetails = () => {
 
     const reviewDoc = {
       foodId: id,
+      reviewerEmail: user?.email || '', 
       reviewerName: user?.displayName || "Anonymous",
       reviewerImage: user?.photoURL || "",
       rating: Number(rating),
