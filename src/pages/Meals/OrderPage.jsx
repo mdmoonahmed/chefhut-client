@@ -89,7 +89,7 @@ const OrderPage = () => {
 
   // submit handler
   const onSubmit = async (formData) => {
-
+      // Prevent fraud
       if (status === "fraud") {
           return Swal.fire({
             icon: "error",

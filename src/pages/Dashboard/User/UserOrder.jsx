@@ -54,8 +54,20 @@ const MyOrders = () => {
 
     if (!confirm.isConfirmed) return;
 
+    const paymentInfo = {
+       foodId: order._id,
+       mealName: order.mealName,
+       price: total,
+       email: email,
+    }
+
+    // send paymentInfo to server
+     const res =await api.post('/create-checkout-session',paymentInfo);
+     console.log(res.data);
+     
+
     // navigate to payment route 
-    navigate(`/payment?orderId=${order._id}`);
+     window.location.href=res.data.url;
   };
 
   if (!email) {

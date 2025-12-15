@@ -25,8 +25,8 @@ const Footer = () => {
         {/* Contact Details */}
         <div>
           <h4 className="t-primary font-semibold mb-4">Contact</h4>
-          <p className="t-muted text-sm mb-2">📍 Dhaka, Bangladesh</p>
-          <p className="t-muted text-sm mb-2">📧 support@localchefbazaar.com</p>
+          <p className="t-muted text-sm mb-2">📍Mirpur, Dhaka, Bangladesh</p>
+          <p className="t-muted text-sm mb-2">📧 support@chefhut.com</p>
           <p className="t-muted text-sm">📞 +880 1234-567890</p>
         </div>
 

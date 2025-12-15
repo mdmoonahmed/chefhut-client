@@ -3,8 +3,10 @@ import useAuth from "../../../Hooks/useAuth";
 import useUser from "../../../Hooks/useUser";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useTitle from "../../../Hooks/useTitles";
 
 const CreateMeal = () => {
+    useTitle("Add Meal | ChefHut")
   const { user } = useAuth();
   const { role, status, chefId, displayName } = useUser();
   const axiosSecure = useAxiosSecure();
@@ -113,7 +115,7 @@ const Input = ({ colSpan, ...props }) => (
     {...props}
     className={`
       w-full p-3 rounded-xl b-g-main border b-subtle t-primary
-      focus:outline-none focus:border-t-accent
+      focus:outline-none focus:border-orange-300
       ${colSpan ? "md:col-span-2" : ""}
     `}
   />

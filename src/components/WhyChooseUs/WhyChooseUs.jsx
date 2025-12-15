@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaLeaf,  FaTruck, FaSmile } from "react-icons/fa";
-import { ChefHat } from "lucide-react";
+import { FaLeaf, FaTruck, FaSmile } from "react-icons/fa";
+import { ChefHat, ChefHatIcon } from "lucide-react";
 
 const features = [
   {
@@ -10,7 +10,7 @@ const features = [
     description: "Top-quality, locally sourced ingredients in every meal.",
   },
   {
-    icon: <ChefHat size={32} className="t-accent" />,
+    icon: <ChefHat size={32} className="fill-[#C9A24D]" />,
     title: "Expert Chefs",
     description: "Cooked by experienced chefs who care about taste.",
   },

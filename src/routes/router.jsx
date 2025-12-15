@@ -15,7 +15,6 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import MyProfile from "../pages/Dashboard/ProfileLayout/MyProfile";
 import UserOrder from "../pages/Dashboard/User/UserOrder";
 import UserFavorite from "../pages/Dashboard/User/UserFavorite";
-import UserOrderHistory from "../pages/Dashboard/User/UserOrderHistory";
 import UserReview from "../pages/Dashboard/User/UserReview";
 import AddMeal from "../pages/Dashboard/Chef/AddMeal";
 import MyMeals from "../pages/Dashboard/Chef/MyMeals";
@@ -77,10 +76,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/favorites",
         element: <UserFavorite></UserFavorite>
-      },
-      {
-        path: "/dashboard/order-history",
-        element: <UserOrderHistory></UserOrderHistory>
       },
       {
         path: "/dashboard/reviews",

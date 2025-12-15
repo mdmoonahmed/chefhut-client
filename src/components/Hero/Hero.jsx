@@ -116,9 +116,9 @@ const Hero = ({
               className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center"
             >
               <div>{renderCTA(ctaPrimary, true)}</div>
-              {ctaSecondary && (
+              {/* {ctaSecondary && (
                 <div>{renderCTA(ctaSecondary, false)}</div>
-              )}
+              )} */}
             </motion.div>
 
             {/* Trust / micro-row */}

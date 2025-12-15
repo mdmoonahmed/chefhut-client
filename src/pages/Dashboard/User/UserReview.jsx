@@ -4,8 +4,10 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader/Loader";
+import useTitle from "../../../Hooks/useTitles";
 
 const MyReviews = () => {
+    useTitle("My Reviews | ChefHut")
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [editingReview, setEditingReview] = useState(null);
