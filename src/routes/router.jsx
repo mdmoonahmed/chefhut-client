@@ -24,6 +24,8 @@ import ManageRequest from "../pages/Dashboard/Admin/ManageRequest";
 import Statistic from "../pages/Dashboard/Admin/Statistic";
 import ChefRoute from "./ChefRoute";
 import AdminRoutes from "./AdminRoutes";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import PaymentCancel from "../pages/Dashboard/Payment/PaymentCancel";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/reviews",
         element: <UserReview></UserReview>
+      },
+      {
+        path: "/dashboard/payment-success",
+        element: <PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path: "/dashboard/payment-cancel",
+        element: <PaymentCancel></PaymentCancel>
       },
           /***Chef****/ 
       {
