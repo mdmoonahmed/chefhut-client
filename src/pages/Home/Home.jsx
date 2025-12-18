@@ -9,7 +9,7 @@ import CustomerReviews from "../../components/CustomerReview/CustomerReview";
 const Home = () => {
   useTitles("Home | ChefHut")
   const meals = useLoaderData();
-  console.log(meals);
+  // console.log(meals);
 
   return (
     <div className="min-h-screen b-g-main">

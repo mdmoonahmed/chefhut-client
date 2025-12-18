@@ -5,17 +5,17 @@ import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../components/Loader/Loader";
 import useTitles from '../../Hooks/useTitles';
 import useUser from "../../Hooks/useUser";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MySwal = withReactContent(Swal);
 
 const OrderPage = () => {
   const { status } = useUser();
-  const api = useAxios();
+  const api = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

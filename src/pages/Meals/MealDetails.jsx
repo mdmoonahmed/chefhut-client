@@ -1,13 +1,13 @@
-// src/pages/Meals/MealDetails.jsx
+
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
 import useUser from "../../Hooks/useUser";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const formatDate = (iso) => {
   try {
@@ -20,7 +20,7 @@ const formatDate = (iso) => {
 const MealDetails = () => {
   const { status } = useUser();
   const { id } = useParams();
-  const api = useAxios();
+  const api = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
 

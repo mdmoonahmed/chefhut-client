@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: ()=> fetch('http://localhost:3000/featured-meals')
+        loader: ()=> fetch('https://chef-hut-indol.vercel.app/featured-meals')
       },
       {
         path: "/meals",

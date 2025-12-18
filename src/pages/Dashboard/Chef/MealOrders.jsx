@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useUser from "../../../Hooks/useUser";
+import useTitle from "../../../Hooks/useTitles";
 
 const OrderRequests = () => {
+  useTitle("Meal Orders | ChefHut");
   const axiosSecure = useAxiosSecure();
   const { chefId } = useUser();
 
@@ -59,9 +61,7 @@ const OrderRequests = () => {
 
   return (
     <div className="b-g-main min-h-screen p-6">
-      <h1 className="header-text text-3xl t-primary mb-6">
-        Order Requests
-      </h1>
+      <h1 className="header-text text-3xl t-primary mb-6">Order Requests</h1>
 
       {orders.length === 0 ? (
         <p className="t-muted">No orders yet.</p>
@@ -86,9 +86,7 @@ const OrderRequests = () => {
                   User: <span className="t-primary">{order.userEmail}</span>
                 </p>
 
-                <p className="t-muted text-sm">
-                  Address: {order.userAddress}
-                </p>
+                <p className="t-muted text-sm">Address: {order.userAddress}</p>
 
                 <div className="flex justify-between">
                   <span className="t-accent font-bold">
@@ -106,9 +104,7 @@ const OrderRequests = () => {
                   </span>
                   <span className="t-muted">
                     Payment:{" "}
-                    <span className="t-primary">
-                      {order.paymentStatus}
-                    </span>
+                    <span className="t-primary">{order.paymentStatus}</span>
                   </span>
                 </div>
 

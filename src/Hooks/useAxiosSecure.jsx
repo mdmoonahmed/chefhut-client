@@ -4,13 +4,13 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://chef-hut-indol.vercel.app/'
 })
 
 const useAxiosSecure = () => {
-    const { user, logOut } = useAuth();
+    const { user, signOutUser } = useAuth();
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         // intercept request
         const reqInterceptor = axiosSecure.interceptors.request.use(config => {
@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
 
             const statusCode = error.status;
             if (statusCode === 401 || statusCode === 403) {
-                logOut()
+                signOutUser()
                     .then(() => {
                         navigate('/login')
                     })
@@ -41,7 +41,7 @@ const useAxiosSecure = () => {
             axiosSecure.interceptors.response.eject(resInterceptor);
         }
 
-    }, [user, logOut, navigate])
+    }, [user, signOutUser, navigate])
 
     return axiosSecure;
 };

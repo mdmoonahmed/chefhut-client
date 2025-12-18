@@ -26,7 +26,7 @@ const MyReviews = () => {
     },
     enabled: !!user?.email,
   });
-  console.log(reviews);
+  // console.log(reviews);
   
 
   const handleDelete = async (id) => {

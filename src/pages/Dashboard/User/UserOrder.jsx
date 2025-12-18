@@ -63,7 +63,7 @@ const MyOrders = () => {
 
     // send paymentInfo to server
      const res =await api.post('/create-checkout-session',paymentInfo);
-     console.log(res.data);
+    //  console.log(res.data);
      
 
     // navigate to payment route 

@@ -3,8 +3,10 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import useTitle from "../../../Hooks/useTitles";
 
 const MyMeals = () => {
+  useTitle("My Meals | ChefHut")
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [selectedMeal, setSelectedMeal] = useState(null);

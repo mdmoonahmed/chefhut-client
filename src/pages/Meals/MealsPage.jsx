@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../../Hooks/useAxios";
 import MealCard from "../../components/Card/MealCard";
 import useTitle from "../../Hooks/useTitles";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MealsPage = () => {
   useTitle('Meals | ChefHut')
-  const api = useAxios();
+  const api = useAxiosSecure();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [sort, setSort] = useState("price");

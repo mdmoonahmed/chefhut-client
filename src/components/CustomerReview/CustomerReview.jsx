@@ -62,7 +62,7 @@ const CustomerReviewsCarousel = () => {
     staleTime: 60_000,
     refetchOnWindowFocus: false,
   });
-  console.log(reviews);
+  // console.log(reviews);
 
   // scroll helper
   const scrollByPage = (direction = "next") => {
