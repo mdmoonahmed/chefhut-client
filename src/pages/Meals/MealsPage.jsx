@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import MealCard from "../../components/Card/MealCard";
 import useTitle from "../../Hooks/useTitles";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from '../../components/Loader/Loader';
 
 const MealsPage = () => {
   useTitle('Meals | ChefHut')
@@ -15,7 +16,7 @@ const MealsPage = () => {
 
   const limit = 9;
 
-  const { data } = useQuery({
+  const { data,isLoading } = useQuery({
     queryKey: ["meals", currentPage, sort, order, search],
     queryFn: async () => {
       const res = await api.get(
@@ -80,12 +81,13 @@ const MealsPage = () => {
       </div>
 
       {/* Cards */}
+       { isLoading ? <Loader></Loader> :
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {meals.map((meal) => (
           <MealCard key={meal._id} meal={meal} />
         ))}
       </div>
-
+       }
       {/* Pagination */}
       <div className="flex justify-center gap-3 mt-10">
         {[...Array(totalPages).keys()].map((page) => (

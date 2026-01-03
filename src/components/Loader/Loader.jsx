@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 const Loading = () => {
   return (
     <div className="min-h-screen flex items-center justify-center b-g-main">
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-3">
 
         {/* Logo */}
         <motion.div
@@ -27,9 +27,7 @@ const Loading = () => {
         /> */}
 
         {/* Text */}
-        <p className="t-muted text-sm tracking-wide">
-          Loading Chef Hut...
-        </p>
+         <span className="loading loading-spinner text-warning"></span>
 
       </div>
     </div>
