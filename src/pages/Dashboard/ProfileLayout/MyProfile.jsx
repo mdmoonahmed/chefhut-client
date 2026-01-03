@@ -12,7 +12,7 @@ import useTitle from "../../../Hooks/useTitles";
 const MySwal = withReactContent(Swal);
 
 const MyProfile = () => {
-  useTitle('My Profile | ChefHut')
+  useTitle("My Profile | ChefHut");
   const { user } = useAuth();
   const api = useAxiosSecure();
   const qc = useQueryClient();
@@ -41,9 +41,11 @@ const MyProfile = () => {
     queryKey: ["my-requests", user?.email],
     queryFn: async () => {
       if (!user?.email) return { requests: [] };
-    
-      const res = await api.get(`/requests?userEmail=${encodeURIComponent(user.email)}&status=pending`);
-     
+
+      const res = await api.get(
+        `/requests?userEmail=${encodeURIComponent(user.email)}&status=pending`
+      );
+
       if (res?.data?.requests) return res.data;
       if (Array.isArray(res?.data)) return { requests: res.data };
       return { requests: res.data.requests || [] };
@@ -55,8 +57,12 @@ const MyProfile = () => {
   const pendingRequests = pendingRequestsData.requests || [];
 
   // helpers to check existing pending of type
-  const hasPendingChefRequest = pendingRequests.some((r) => r.requestType === "chef");
-  const hasPendingAdminRequest = pendingRequests.some((r) => r.requestType === "admin");
+  const hasPendingChefRequest = pendingRequests.some(
+    (r) => r.requestType === "chef"
+  );
+  const hasPendingAdminRequest = pendingRequests.some(
+    (r) => r.requestType === "admin"
+  );
 
   // role from userDoc or fallback to 'user'
   const role = (userDoc && userDoc.role) || user?.role || "user";
@@ -65,7 +71,11 @@ const MyProfile = () => {
   // handle sending a request
   const sendRoleRequest = async (type) => {
     if (!user?.email) {
-      MySwal.fire("Not logged in", "Please login to send a request.", "warning");
+      MySwal.fire(
+        "Not logged in",
+        "Please login to send a request.",
+        "warning"
+      );
       return;
     }
 
@@ -76,7 +86,11 @@ const MyProfile = () => {
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Yes, send request",
-      customClass: { popup: "b-g-surface", title: "t-primary", content: "t-muted" },
+      customClass: {
+        popup: "b-g-surface",
+        title: "t-primary",
+        content: "t-muted",
+      },
     });
 
     if (!conf.isConfirmed) return;
@@ -86,7 +100,7 @@ const MyProfile = () => {
       userId: userDoc?._id || user.uid || null,
       userName: user.displayName || userDoc?.name || "",
       userEmail: user.email,
-      requestType: type, 
+      requestType: type,
     };
 
     try {
@@ -96,7 +110,11 @@ const MyProfile = () => {
         title: "Request submitted",
         text: `Your request to become ${type} has been submitted and is pending review.`,
         icon: "success",
-        customClass: { popup: "b-g-surface", title: "t-primary", content: "t-muted" },
+        customClass: {
+          popup: "b-g-surface",
+          title: "t-primary",
+          content: "t-muted",
+        },
       });
 
       // refresh pending requests and user doc (in case admin auto-changes)
@@ -105,7 +123,10 @@ const MyProfile = () => {
     } catch (err) {
       console.error("POST /requests error:", err);
       const status = err?.response?.status;
-      const msg = err?.response?.data?.error || err?.message || "Failed to submit request";
+      const msg =
+        err?.response?.data?.error ||
+        err?.message ||
+        "Failed to submit request";
       if (status === 409) {
         MySwal.fire("Already pending", msg, "info");
       } else {
@@ -116,7 +137,7 @@ const MyProfile = () => {
 
   // Loading / error states
   if (userLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
 
   if (userError) {
@@ -128,7 +149,8 @@ const MyProfile = () => {
   }
 
   // snapshot fields (prefer server-side userDoc values)
-  const displayName = userDoc?.displayName || user?.displayName || userDoc?.name || "Unnamed";
+  const displayName =
+    userDoc?.displayName || user?.displayName || userDoc?.name || "Unnamed";
   const email = user?.email || userDoc?.email || "—";
   const image = userDoc?.photoURL || user?.photoURL || "/default-user.png";
   const address = userDoc?.address || user?.userAddress || "Not provided";
@@ -166,8 +188,17 @@ const MyProfile = () => {
 
                 <div className="p-3 rounded-md b-g-main">
                   <div className="t-muted text-xs">Status</div>
-                  <div className={`text-sm flex items-center gap-1 font-medium ${userStatus === "fraud" ? "t-accent" : "t-primary"}`}>
-                   {userStatus === "fraud" ? <GoDotFill className="text-red-500" />: <GoDotFill className="text-green-500" />} {userStatus}
+                  <div
+                    className={`text-sm flex items-center gap-1 font-medium ${
+                      userStatus === "fraud" ? "t-accent" : "t-primary"
+                    }`}
+                  >
+                    {userStatus === "fraud" ? (
+                      <GoDotFill className="text-red-500" />
+                    ) : (
+                      <GoDotFill className="text-green-500" />
+                    )}{" "}
+                    {userStatus}
                   </div>
                 </div>
 
@@ -185,11 +216,19 @@ const MyProfile = () => {
                     onClick={() => sendRoleRequest("chef")}
                     disabled={hasPendingChefRequest}
                     className={`px-4 py-2 rounded-md font-semibold ${
-                      hasPendingChefRequest ? "opacity-60 cursor-not-allowed b-subtle t-primary" : "b-g-accent text-black"
+                      hasPendingChefRequest
+                        ? "opacity-60 cursor-not-allowed b-subtle t-primary"
+                        : "b-g-accent text-black"
                     }`}
-                    title={hasPendingChefRequest ? "You already have a pending chef request" : "Request to become a chef"}
+                    title={
+                      hasPendingChefRequest
+                        ? "You already have a pending chef request"
+                        : "Request to become a chef"
+                    }
                   >
-                    {hasPendingChefRequest ? "Chef request pending" : "Be a Chef"}
+                    {hasPendingChefRequest
+                      ? "Chef request pending"
+                      : "Be a Chef"}
                   </button>
                 )}
 
@@ -199,7 +238,9 @@ const MyProfile = () => {
                     onClick={() => sendRoleRequest("admin")}
                     disabled={hasPendingAdminRequest || role === "chef"}
                     className={`px-4 py-2 rounded-md font-semibold ${
-                      hasPendingAdminRequest || role === "chef" ? "opacity-60 cursor-not-allowed b-subtle t-primary" : "b-subtle t-primary"
+                      hasPendingAdminRequest || role === "chef"
+                        ? "opacity-60 cursor-not-allowed b-subtle t-primary"
+                        : "b-subtle t-primary"
                     }`}
                     title={
                       hasPendingAdminRequest
@@ -209,7 +250,9 @@ const MyProfile = () => {
                         : "Request to become an admin"
                     }
                   >
-                    {hasPendingAdminRequest ? "Admin request pending" : "Be an Admin"}
+                    {hasPendingAdminRequest
+                      ? "Admin request pending"
+                      : "Be an Admin"}
                   </button>
                 )}
               </div>
@@ -217,16 +260,27 @@ const MyProfile = () => {
               {/* Pending requests list (if any) */}
               {pendingRequests.length > 0 && (
                 <div className="mt-6">
-                  <h4 className="t-primary text-sm font-semibold mb-2">Pending Requests</h4>
+                  <h4 className="t-primary text-sm font-semibold mb-2">
+                    Pending Requests
+                  </h4>
                   <div className="space-y-2">
                     {pendingRequests.map((r) => (
-                      <div key={r._id || r.requestTime} className="b-g-main b-subtle p-3 rounded-md">
+                      <div
+                        key={r._id || r.requestTime}
+                        className="b-g-main b-subtle p-3 rounded-md"
+                      >
                         <div className="flex items-center justify-between">
                           <div>
-                            <div className="t-primary text-sm font-medium">{r.requestType.toUpperCase()}</div>
-                            <div className="t-muted text-xs">{new Date(r.requestTime).toLocaleString()}</div>
+                            <div className="t-primary text-sm font-medium">
+                              {r.requestType.toUpperCase()}
+                            </div>
+                            <div className="t-muted text-xs">
+                              {new Date(r.requestTime).toLocaleString()}
+                            </div>
                           </div>
-                          <div className="t-muted text-sm">{r.requestStatus}</div>
+                          <div className="t-muted text-sm">
+                            {r.requestStatus}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -238,7 +292,8 @@ const MyProfile = () => {
 
           {/* small note */}
           <div className="mt-6 t-muted text-xs">
-            Note: Requests are reviewed by admins. You will be notified when your role changes.
+            Note: Requests are reviewed by admins. You will be notified when
+            your role changes.
           </div>
         </div>
       </div>

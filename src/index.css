@@ -4,32 +4,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 
+:root{
+  --bg-main: #0E0E11;
+  --bg-surface: #14141A;
+  --accent: #C9A24D;
+
+  --text-primary: #EAEAEA;
+  --text-muted: #A1A1AA;
+
+  --border-subtle: #23232A;
+}
+
+[data-theme="light"]{
+  --bg-main: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --accent: #C9A24D;
+
+  --text-primary: #111111;
+  --text-muted: #555555;
+
+  --border-subtle: #E5E7EB;
+}
+
+
 .b-g-main{
-    background-color: #0E0E11;
+  background-color: var(--bg-main);
 }
+
 .b-g-surface{
-    background-color: #14141A;
+  background-color: var(--bg-surface);
 }
+
 .b-g-accent{
-    background-color: #C9A24D;
+  background-color: var(--accent);
 }
 
 .t-primary{
-    color: #EAEAEA;
+  color: var(--text-primary);
 }
+
 .t-muted{
-    color: #A1A1AA;
+  color: var(--text-muted);
 }
 
 .t-accent{
-    color: #C9A24D;
+  color: var(--accent);
 }
+
 .hover-accent:hover{
-   color: #C9A24D;
+  color: var(--accent);
 }
+
 .b-subtle{
-    border: 1px solid #23232A;
+  border: 1px solid var(--border-subtle);
 }
+
+
 
 .header-text {
   font-family: "Playfair Display", serif;

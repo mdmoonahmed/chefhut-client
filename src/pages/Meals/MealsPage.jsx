@@ -71,7 +71,7 @@ const MealsPage = () => {
            
            <select
              onChange={e=> setOrder(e.target.value)}
-             className="b-g-surface b-subtle text-white px-1 py-2 rounded-md"
+             className="b-g-surface b-subtle t-primary px-1 py-2 rounded-md"
            >
                <option value="desc">▼</option>
                <option value="asc">▲</option>

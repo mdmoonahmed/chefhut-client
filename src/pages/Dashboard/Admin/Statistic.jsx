@@ -15,25 +15,26 @@ const PlatformStatistics = () => {
       return res.data;
     },
   });
-
+    console.log(data);
+    
   if (isLoading) {
     return <div className="t-muted text-center mt-10">Loading statistics...</div>;
   }
 
   const {
-    totalPayments = 0,
+    totalPaid  = 0,
     totalUsers = 0,
-    pendingOrders = 0,
-    deliveredOrders = 0,
+    ordersPending = 0,
+    ordersDelivered = 0,
   } = data;
 
   const orderData = [
-    { name: "Pending", value: pendingOrders },
-    { name: "Delivered", value: deliveredOrders },
+    { name: "Pending", value: ordersPending },
+    { name: "Delivered", value: ordersDelivered },
   ];
 
   const barData = [
-    { name: "Payments", value: totalPayments },
+    { name: "Payments", value: totalPaid },
     { name: "Users", value: totalUsers },
   ];
 
@@ -45,10 +46,10 @@ const PlatformStatistics = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
-        <StatCard title="Total Payments" value={`৳ ${totalPayments}`} />
+        <StatCard title="Total Payments" value={`৳ ${totalPaid}`} />
         <StatCard title="Total Users" value={totalUsers} />
-        <StatCard title="Pending Orders" value={pendingOrders} />
-        <StatCard title="Delivered Orders" value={deliveredOrders} />
+        <StatCard title="Pending Orders" value={ordersPending} />
+        <StatCard title="Delivered Orders" value={ordersDelivered} />
       </div>
 
       {/* Charts */}

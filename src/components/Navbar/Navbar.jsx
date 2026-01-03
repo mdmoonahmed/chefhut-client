@@ -7,13 +7,13 @@ import useAuth from "../../Hooks/useAuth";
 const getLinkStyle = ({ isActive }) => {
   return {
     borderBottom: isActive ? "2px solid  #C9A24D" : "none",
-    color: isActive ? " #C9A24D" : "#EAEAEA",
+    color: isActive ? " #C9A24D" : 'var(--text-primary)',
     paddingBottom: "2px",
   };
 };
 
 const Navbar = () => {
-  const { user, signOutUser,loading } = useAuth();
+  const { user, signOutUser, loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -26,22 +26,30 @@ const Navbar = () => {
     });
   };
 
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    const next = html.dataset.theme === "light" ? "dark" : "light";
+
+    html.dataset.theme = next;
+    localStorage.setItem("theme", next);
+  };
+
   const links = (
     <>
       <li>
-        <NavLink className="font-semibold" to="/" style={getLinkStyle}>
+        <NavLink className=" font-semibold" to="/" style={getLinkStyle}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink className="font-semibold" to="/meals" style={getLinkStyle}>
+        <NavLink className=" font-semibold" to="/meals" style={getLinkStyle}>
           Meals
         </NavLink>
       </li>
       {user && (
         <li>
           <NavLink
-            className="font-semibold"
+            className=" font-semibold"
             to="/dashboard/profile"
             style={getLinkStyle}
           >
@@ -76,11 +84,48 @@ const Navbar = () => {
             </label>
             <ul className="menu menu-sm dropdown-content b-g-surface rounded-box z-50 mt-3 w-52 p-4 shadow-lg">
               {links}
+              <li className="mt-2">
+              <label className="flex cursor-pointer gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <input
+                  type="checkbox"
+                  value="synthwave"
+                  className="toggle theme-controller"
+                  onClick={toggleTheme}
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                </svg>
+              </label>
+              </li>
             </ul>
           </div>
           <Link
             to={"/"}
-            className="header-text flex gap-1 items-center text-xl md:text-3xl font-display t-accent normal-case"
+            className="header-text flex gap-1 items-center text-md md:text-3xl font-display t-accent normal-case"
           >
             <img className="h-10" src={logo} alt="" /> Chef Hut
           </Link>
@@ -94,7 +139,42 @@ const Navbar = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="navbar-end relative">
+        <div className="navbar-end relative flex gap-5">
+          <label className="hidden sm:flex cursor-pointer gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <input
+              type="checkbox"
+              value="synthwave"
+              className="toggle theme-controller"
+              onClick={toggleTheme}
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
+          </label>
           {user ? (
             <div className="relative" ref={dropdownRef}>
               <button onClick={() => setIsOpen(!isOpen)}>
