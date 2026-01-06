@@ -41,10 +41,10 @@ const Footer = () => {
         <div>
           <h4 className="t-primary font-semibold mb-4">Follow Us</h4>
           <div className="flex gap-4">
-            <a href="https://www.facebook.com/" className="t-muted hover-accent transition"><FaSquareFacebook /></a>
-            <a href="https://www.instagram.com/" className="t-muted hover-accent transition"><FaInstagram /></a>
+            <a href="https://www.facebook.com/moonahmed.moon.10" className="t-muted hover-accent transition"><FaSquareFacebook /></a>
+            <a href="https://www.instagram.com/moonahmed_10" className="t-muted hover-accent transition"><FaInstagram /></a>
             <a href="https://www.x.com/" className="t-muted hover-accent transition"><FaSquareXTwitter/></a>
-            <a href="https://www.linkedin.com/" className="t-muted hover-accent transition"><FaLinkedin/></a>
+            <a href="https://www.linkedin.com/in/moon-ahmed10" className="t-muted hover-accent transition"><FaLinkedin/></a>
           </div>
         </div>
 

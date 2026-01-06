@@ -7,7 +7,7 @@ The platform supports role-based dashboards, secure payments, and real-time orde
 ---
 
 ## 🌐 Live Website
-🔗 **Live URL:** https://chefhut.netlify.app/ 
+🔗 **Live URL:** https://chefhut.vercel.app/ 
 🔗 **Server URL:** https://chef-hut-indol.vercel.app/
 
 ---
