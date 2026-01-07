@@ -1,4 +1,4 @@
-# <img src='/src/assets/logo.png' height='10' width='auto'> ChefHut — Food Ordering Platform
+# <img src='/src/assets/logo.png' height='30' width='auto'> ChefHut — Food Ordering Platform
 [![Live Demo](public/Screenshot%202026-01-01%20022922.png)](https://chefhut.vercel.app/)
 ## 📌 Project Purpose
 ChefHut is a full-stack food ordering platform where users can order meals from chefs, chefs can manage meals and orders, and admins can control users, requests, and platform statistics.  
